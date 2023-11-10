@@ -1,18 +1,20 @@
-import { ethers } from "hardhat";
+import { formatEther, parseEther } from "viem";
+import hre from "hardhat";
 
 async function main() {
   const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const unlockTime = BigInt(currentTimestampInSeconds + 60);
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+  const lockedAmount = parseEther("0.001");
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
+  const lock = await hre.viem.deployContract("Lock", [unlockTime], {
+    value: lockedAmount,
+  });
 
   console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+    `Lock with ${formatEther(
+      lockedAmount
+    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
   );
 }
 
