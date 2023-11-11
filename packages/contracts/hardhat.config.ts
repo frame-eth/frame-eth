@@ -1,6 +1,7 @@
 import '@nomicfoundation/hardhat-toolbox-viem'
 import 'dotenv/config'
 import { HardhatUserConfig } from 'hardhat/config'
+import './scripts/generate'
 
 const accounts = process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
 
@@ -46,7 +47,7 @@ const config: HardhatUserConfig = {
     timeout: 20000,
   },
   sourcify: {
-    enabled: true
+    enabled: true,
   },
 }
 
