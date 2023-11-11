@@ -1,4 +1,4 @@
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/constants";
+import { getContract } from "@/constants";
 import { useContractReads } from "wagmi";
 
 interface ContractFunction {
@@ -6,10 +6,9 @@ interface ContractFunction {
   args?: any[];
 }
 
-export const useReads = (functions: ContractFunction[]) => {
+export const useReads = (chainId: number, functions: ContractFunction[]) => {
   const contracts = functions.map(({ functionName, args }) => ({
-    address: CONTRACT_ADDRESS as any,
-    abi: CONTRACT_ABI as any,
+    ...getContract(chainId),
     functionName,
     args,
   }));

@@ -1,10 +1,9 @@
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/constants";
+import { getContract } from "@/constants";
 import { useContractRead } from "wagmi";
 
-export const useRead = (functionName: string, args?: any[]) => {
+export const useRead = (chainId: number, functionName: string, args?: any[]) => {
   const { data, isError, isLoading } = useContractRead({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
+    ...getContract(chainId),
     functionName,
     args,
     watch: true,

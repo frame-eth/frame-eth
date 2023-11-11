@@ -1,14 +1,14 @@
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/constants";
+import { getContract } from "@/constants";
 import { usePrepareContractWrite } from "wagmi";
 
 export const usePrepareWrite = (
+  chainId: number,
   functionName: string,
   args?: (string | number | [])[],
   value?: bigint,
 ) => {
   const { config, error, isError, isLoading, isSuccess } = usePrepareContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: CONTRACT_ABI,
+    ...getContract(chainId),
     functionName,
     args,
     value,
