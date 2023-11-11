@@ -1,4 +1,4 @@
-import Header from "@/components/layout/header";
+import Layout from "@/components/layout";
 import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import type { Metadata } from "next";
@@ -16,8 +16,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-
-        <Providers>{children}</Providers>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );

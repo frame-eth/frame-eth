@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Container: FC<Props> = ({ children, className }) => {
-  return <div className={twMerge(cx("mx-auto max-w-7xl px-4 sm:px-6", className))}>{children}</div>;
+  return <div className={twMerge(cx("mx-auto max-w-7xl px-8 sm:px-6", className))}>{children}</div>;
 };
 
 export default Container;
