@@ -40,6 +40,9 @@ devDependencies:
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
+  prisma:
+    specifier: ^5.5.2
+    version: 5.5.2
   tailwindcss:
     specifier: ^3.3.0
     version: 3.3.5
@@ -263,6 +266,11 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@prisma/engines@5.5.2:
+    resolution: {integrity: sha512-Be5hoNF8k+lkB3uEMiCHbhbfF6aj1GnrTBnn5iYFT7GEr3TsOEp1soviEcBR0tYCgHbxjcIxJMhdbvxALJhAqg==}
+    requiresBuild: true
     dev: true
 
   /@rushstack/eslint-patch@1.5.1:
@@ -2061,6 +2069,15 @@ packages:
     resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
+    dev: true
+
+  /prisma@5.5.2:
+    resolution: {integrity: sha512-WQtG6fevOL053yoPl6dbHV+IWgKo25IRN4/pwAGqcWmg7CrtoCzvbDbN9fXUc7QS2KK0LimHIqLsaCOX/vHl8w==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 5.5.2
     dev: true
 
   /prop-types@15.8.1:
