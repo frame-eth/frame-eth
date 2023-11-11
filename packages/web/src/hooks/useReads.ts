@@ -1,9 +1,9 @@
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants'
-import { useContractReads } from 'wagmi'
+import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/constants";
+import { useContractReads } from "wagmi";
 
 interface ContractFunction {
-  functionName: string
-  args?: any[]
+  functionName: string;
+  args?: any[];
 }
 
 export const useReads = (functions: ContractFunction[]) => {
@@ -12,12 +12,12 @@ export const useReads = (functions: ContractFunction[]) => {
     abi: CONTRACT_ABI as any,
     functionName,
     args,
-  }))
+  }));
 
   const { data, isError, isLoading } = useContractReads({
     contracts,
     watch: true,
-  })
+  });
 
-  return { data, isError, isLoading }
-}
+  return { data, isError, isLoading };
+};

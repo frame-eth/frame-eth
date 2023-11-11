@@ -11,7 +11,9 @@
   },
   "scripts": {
     "node": "yarn workspace @fe/contracts run node",
-    "dev": "yarn workspace @fe/web dev"
+    "dev": "yarn workspace @fe/web dev",
+    "web": "yarn workspace @fe/web",
+    "contracts": "yarn workspace @fe/contracts"
   },
   "author": "ahmedhamedaly",
   "license": "MIT"
