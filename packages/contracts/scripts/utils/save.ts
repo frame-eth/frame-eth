@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import prettier from 'prettier'
 import { Abi } from 'viem'
 
 export const save = async (chainId: number, address: string, abi: Abi) => {
@@ -15,22 +16,27 @@ export const save = async (chainId: number, address: string, abi: Abi) => {
 
   if (!fs.existsSync(contractsDir)) fs.mkdirSync(contractsDir)
 
-  const code = `
-import { Abi } from "viem";
-
-interface Artifact {
-  [key: string]: {
-    address: \`0x\${string}\`;
-    abi: Abi;
-  };
-}
-
-export const Contracts: Artifact = {
-  ${chainId}: {
-    address: "${address}",
-    abi: ${JSON.stringify(abi, null, 2)},
-  },
-};
-  `
-  fs.writeFileSync(path.join(contractsDir, 'deployedContracts.ts'), code.trim())
+  fs.writeFileSync(
+    path.join(contractsDir, 'deployedContracts.ts'),
+    await prettier.format(
+      `import { Abi } from "viem";
+      \n\n
+      interface Artifact {
+        [key: string]: {
+          address: \`0x\${string}\`;
+          abi: Abi;
+        };
+      }
+      \n\n
+      export const Contracts: Artifact = {
+        ${chainId}: {
+          address: "${address}",
+          abi: ${JSON.stringify(abi, null, 2)},
+        }
+      }`,
+      {
+        parser: 'typescript',
+      }
+    )
+  )
 }
