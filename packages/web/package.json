@@ -12,7 +12,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@rainbow-me/rainbowkit": "^1.2.0",
-    "autoprefixer": "10.4.16",
+    "@t3-oss/env-nextjs": "^0.7.1",
     "blo": "^1.1.1",
     "classnames": "^2.3.2",
     "framer-motion": "^10.16.4",
@@ -26,9 +26,9 @@
     "react-hot-toast": "^2.4.1",
     "react-jazzicon": "^1.0.4",
     "tailwind-merge": "^2.0.0",
-    "tailwindcss": "3.3.5",
     "viem": "^1.18.9",
-    "wagmi": "^1.4.6"
+    "wagmi": "^1.4.6",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.9",
