@@ -1,5 +1,7 @@
-import { copyToClipboard } from '@/utils/copy'
-import { getBlockExplorerAddressLink, getTargetNetwork } from '@/utils/network'
+"use client";
+
+import { copyToClipboard } from "@/utils/copy";
+import { getBlockExplorerAddressLink, getTargetNetwork } from "@/utils/network";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
@@ -7,38 +9,38 @@ import {
   CheckCircleIcon,
   DocumentDuplicateIcon,
   QrCodeIcon,
-} from '@heroicons/react/24/outline'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { QRCodeSVG } from 'qrcode.react'
-import { useState } from 'react'
-import { useDisconnect, useEnsName, useSwitchNetwork } from 'wagmi'
-import { Address } from './Address'
-import { Balance } from './Balance'
-import { BlockieAvatar } from './BlockieAvatar'
+} from "@heroicons/react/24/outline";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { QRCodeSVG } from "qrcode.react";
+import { useState } from "react";
+import { useDisconnect, useEnsName, useSwitchNetwork } from "wagmi";
+import { Address } from "./Address";
+import { Balance } from "./Balance";
+import { BlockieAvatar } from "./BlockieAvatar";
 
 /**
  * Custom Wagmi Connect Button (watch balance + custom design)
  */
 export const CustomConnectButton = () => {
-  const [address, setAddress] = useState('')
-  const configuredNetwork = getTargetNetwork()
-  const { disconnect } = useDisconnect()
-  const { switchNetwork } = useSwitchNetwork()
-  const [addressCopied, setAddressCopied] = useState(false)
+  const [address, setAddress] = useState("");
+  const configuredNetwork = getTargetNetwork();
+  const { disconnect } = useDisconnect();
+  const { switchNetwork } = useSwitchNetwork();
+  const [addressCopied, setAddressCopied] = useState(false);
 
   const { data: ensName } = useEnsName({
     address: address as `0x${string}`,
-  })
+  });
 
   return (
     <ConnectButton.Custom>
       {({ account, chain, openConnectModal, mounted }) => {
-        const connected = mounted && account && chain
+        const connected = mounted && account && chain;
         const blockExplorerAddressLink = account
           ? getBlockExplorerAddressLink(getTargetNetwork(), account.address)
-          : undefined
+          : undefined;
 
-        if (account && account.address) setAddress(account.address)
+        if (account && account.address) setAddress(account.address);
 
         return (
           <>
@@ -52,7 +54,7 @@ export const CustomConnectButton = () => {
                   >
                     Connect Wallet
                   </button>
-                )
+                );
               }
 
               if (chain.unsupported || chain.id !== configuredNetwork.id) {
@@ -92,16 +94,13 @@ export const CustomConnectButton = () => {
                       </li>
                     </ul>
                   </div>
-                )
+                );
               }
 
               return (
                 <div className="flex justify-end items-center">
                   <div className="flex flex-col items-center mr-1">
-                    <Balance
-                      address={account.address}
-                      className="min-h-0 h-auto"
-                    />
+                    <Balance address={account.address} className="min-h-0 h-auto" />
                     <span className="text-xs">{chain.name}</span>
                   </div>
                   <div className="dropdown dropdown-end leading-3">
@@ -129,47 +128,35 @@ export const CustomConnectButton = () => {
                               className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                               aria-hidden="true"
                             />
-                            <span className=" whitespace-nowrap text-">
-                              Copy address
-                            </span>
+                            <span className=" whitespace-nowrap text-">Copy address</span>
                           </div>
                         ) : (
                           <div
                             className="btn-sm flex gap-3 py-3"
                             onClick={() => {
-                              copyToClipboard(account.address)
-                              setAddressCopied(true)
+                              copyToClipboard(account.address);
+                              setAddressCopied(true);
                               setTimeout(() => {
-                                setAddressCopied(false)
-                              }, 800)
+                                setAddressCopied(false);
+                              }, 800);
                             }}
                           >
                             <DocumentDuplicateIcon
                               className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                               aria-hidden="true"
                             />
-                            <span className="whitespace-nowrap">
-                              Copy address
-                            </span>
+                            <span className="whitespace-nowrap">Copy address</span>
                           </div>
                         )}
                       </li>
                       <li>
-                        <label
-                          htmlFor="qrcode-modal"
-                          className="btn-sm flex gap-3 py-3"
-                        >
+                        <label htmlFor="qrcode-modal" className="btn-sm flex gap-3 py-3">
                           <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">
-                            View QR Code
-                          </span>
+                          <span className="whitespace-nowrap">View QR Code</span>
                         </label>
                       </li>
                       <li>
-                        <button
-                          className="menu-item btn-sm flex gap-3 py-3"
-                          type="button"
-                        >
+                        <button className="menu-item btn-sm flex gap-3 py-3" type="button">
                           <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
                           <a
                             target="_blank"
@@ -187,22 +174,15 @@ export const CustomConnectButton = () => {
                           type="button"
                           onClick={() => disconnect()}
                         >
-                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" />{' '}
+                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" />{" "}
                           <span>Disconnect</span>
                         </button>
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <input
-                      type="checkbox"
-                      id="qrcode-modal"
-                      className="modal-toggle"
-                    />
-                    <label
-                      htmlFor="qrcode-modal"
-                      className="modal cursor-pointer"
-                    >
+                    <input type="checkbox" id="qrcode-modal" className="modal-toggle" />
+                    <label htmlFor="qrcode-modal" className="modal cursor-pointer">
                       <label className="modal-box relative">
                         {/* dummy input to capture event onclick on modal box */}
                         <input className="h-0 w-0 absolute top-0 left-0" />
@@ -226,11 +206,11 @@ export const CustomConnectButton = () => {
                     </label>
                   </div>
                 </div>
-              )
+              );
             })()}
           </>
-        )
+        );
       }}
     </ConnectButton.Custom>
-  )
-}
+  );
+};
