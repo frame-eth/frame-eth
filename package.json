@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "localnode": "yarn workspace @fe/contracts localnode"
+    "node": "yarn workspace @fe/contracts run node"
   },
   "author": "ahmedhamedaly",
   "license": "MIT"

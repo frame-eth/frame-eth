@@ -2,7 +2,7 @@
   "name": "@fe/contracts",
   "version": "1.0.0",
   "scripts": {
-    "localnode": "npx hardhat node"
+    "node": "npx hardhat node"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.9",
