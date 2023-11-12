@@ -2,7 +2,18 @@
   "name": "@fe/contracts",
   "version": "1.0.0",
   "scripts": {
-    "node": "npx hardhat node"
+    "check": "npx hardhat check",
+    "clean": "npx hardhat clean",
+    "compile": "npx hardhat compile",
+    "console": "npx hardhat console",
+    "coverage": "npx hardhat coverage",
+    "deploy": "npx hardhat deploy",
+    "flatten": "npx hardhat flatten",
+    "generate": "npx hardhat generate",
+    "help": "npx hardhat help",
+    "node": "npx hardhat node",
+    "test": "npx hardhat test",
+    "verify": "npx hardhat verify"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.9",
