@@ -1,33 +1,20 @@
-import hre from 'hardhat'
-import { formatEther, parseEther } from 'viem'
+import { task } from 'hardhat/config'
 import { save } from './utils/save'
 import { verify } from './utils/verify'
 
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000)
-  const unlockTime = BigInt(currentTimestampInSeconds + 60)
+task('deploy', '📰 Deploys a contract, saves the artifact and verifies it.')
+  .addParam('contract', 'Name of the contract to deploy.', 'Lock')
+  .addFlag('save', 'Flag to indicate whether to save the contract or not')
+  .addFlag('verify', 'Flag to indicate whether to verify the contract or not')
+  .setAction(async (args, { viem, run }) => {
+    const currentTimestampInSeconds = Math.round(Date.now() / 1000)
+    const unlockTime = BigInt(currentTimestampInSeconds + 60)
 
-  const lockedAmount = parseEther('0.001')
+    const Contract = await viem.deployContract(args.contract, [unlockTime])
+    console.log(`📰 Contract deployed successfully! ${Contract.address}`)
 
-  const lock = await hre.viem.deployContract('Lock', [unlockTime], {
-    value: lockedAmount,
+    const chainId = (await viem.getPublicClient()).chain.id
+
+    args.save && (await save(chainId, Contract.address, Contract.abi))
+    args.verify && (await verify(run, Contract.address, [unlockTime]))
   })
-
-  const chainId = (await hre.viem.getPublicClient()).chain.id
-  await save(chainId, lock.address, lock.abi)
-
-  chainId !== 1337 && (await verify(lock.address, [unlockTime]))
-
-  console.log(
-    `Lock with ${formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  )
-}
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error)
-  process.exitCode = 1
-})

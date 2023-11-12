@@ -11,13 +11,14 @@ export const save = async (chainId: number, address: string, abi: Abi) => {
     '..',
     'web',
     'src',
-    'constants'
+    'constants',
+    'deployedContracts.ts'
   )
 
   if (!fs.existsSync(contractsDir)) fs.mkdirSync(contractsDir)
 
   fs.writeFileSync(
-    path.join(contractsDir, 'deployedContracts.ts'),
+    path.join(contractsDir),
     await prettier.format(
       `import { Abi } from "viem";
       \n\n
@@ -39,4 +40,6 @@ export const save = async (chainId: number, address: string, abi: Abi) => {
       }
     )
   )
+
+  console.log(`💾 Contract artifact has been saved to ${contractsDir}`)
 }

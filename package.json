@@ -13,7 +13,8 @@
     "node": "yarn workspace @fe/contracts run node",
     "dev": "yarn workspace @fe/web dev",
     "web": "yarn workspace @fe/web",
-    "contracts": "yarn workspace @fe/contracts"
+    "contracts": "yarn workspace @fe/contracts",
+    "hardhat": "cd packages/contracts && npx hardhat"
   },
   "author": "ahmedhamedaly",
   "license": "MIT"
