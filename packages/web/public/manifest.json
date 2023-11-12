@@ -2,7 +2,7 @@
   "id": "frame-eth",
   "name": "Frame ETH",
   "short_name": "FrameETH",
-  "description": "Web3 Frontend Starter",
+  "description": "🖼️ forkable Ethereum dev stack focused on fast product iterations.",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
