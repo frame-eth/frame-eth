@@ -2533,13 +2533,28 @@
   dependencies:
     "@tanstack/query-persist-client-core" "4.36.1"
 
-"@tanstack/react-query@^4.28.0":
+"@tanstack/react-query@^4.0.0", "@tanstack/react-query@^4.28.0":
   version "4.36.1"
   resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.36.1.tgz#acb589fab4085060e2e78013164868c9c785e5d2"
   integrity sha512-y7ySVHFyyQblPl3J3eQBWpXZkliroki3ARnBKsdJchlgt7yJLRDUcf4B8soufgiYt3pEQIkBWBx1N9/ZPIeUWw==
   dependencies:
     "@tanstack/query-core" "4.36.1"
     use-sync-external-store "^1.2.0"
+
+"@trpc/client@^10.43.3":
+  version "10.43.3"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.43.3.tgz#28f6724c037361b4c430a28b828955e342d06627"
+  integrity sha512-r/aE1l2iybJMlXCf+KWqSQpIloOqw/3jQhZD8F4VpvczWPI5fEQCmZZuPHAz2L/PiGE5K/ZwXQrJsT207ZQ2AQ==
+
+"@trpc/react-query@^10.43.3":
+  version "10.43.3"
+  resolved "https://registry.yarnpkg.com/@trpc/react-query/-/react-query-10.43.3.tgz#1b9805e38ad765d91724341cf474fec153f9d615"
+  integrity sha512-yTmORp8pJ15GV8rR2QTR6bIPxk/Vbtl2vLTDz+G5GipKc+9kSRRYaVqbwzFuaPf5NOMK/JYkIsyIpitabQ1n9A==
+
+"@trpc/server@^10.43.3":
+  version "10.43.3"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.3.tgz#eb232662320b2ab4092c464d38dd19d4ead527ee"
+  integrity sha512-U7HsNtgjupNvPzH6ho4rPlIXZ2t5PctOH6pmFX4jv4YJi98RjGuOhHUNhiiVb8KUw6Kuh5EHTAv7cUV+igbMuQ==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
