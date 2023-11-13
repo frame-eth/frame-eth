@@ -9,9 +9,13 @@
     "lint": "next lint",
     "vercel": "vercel"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^5.5.2",
     "@rainbow-me/rainbowkit": "^1.2.0",
     "@t3-oss/env-nextjs": "^0.7.1",
     "blo": "^1.1.1",
